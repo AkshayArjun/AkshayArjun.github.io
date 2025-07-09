@@ -20,8 +20,7 @@ title: Akshay Arjun # the main title
 tagline: Robotics | Control | Learning # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  A personal blog of Akshay Arjun, a final year undergraduate student at BITS Pilani, India.
-  Here I share my thoughts on robotics, control systems, and learning experiences.
+  This is a portfolio website of Akshay Arjun. Here I share my projects, knowledge, and experience I have gained in the field of Robotics, Control, and Learning.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
