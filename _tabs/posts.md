@@ -1,7 +1,7 @@
 ---
-title: Blog
+title: "Blog"
 icon: fas fa-pen
-order: 4
+order: 3
 layout: home
 permalink: /posts/
 ---
