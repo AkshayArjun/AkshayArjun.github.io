@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "About Me"
-icon: fas fa-about
+icon: fas fa-info-circle
 order: 1
 ---
 
