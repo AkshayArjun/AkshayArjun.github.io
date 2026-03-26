@@ -2,89 +2,256 @@
 ---
 @import "main";
 
-/* --- SCI-FI / ROBOTICS THEME OVERRIDES --- */
+/* ============================================================
+   AKSHAY ARJUN — GLASSY STARFIELD THEME v4
+   ============================================================ */
 
-/* 1. Deep Space & Holographic Cyan Palette */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+/* ─────────────────────────────────────────
+   1. GLOBAL COLOR TOKENS
+───────────────────────────────────────── */
 [data-mode="dark"] {
-  --sidebar-bg: #050508 !important; /* Pitch black with a hint of blue */
-  --body-bg: #08080c !important; 
-  --link-color: #00f0ff !important; /* Cyber cyan */
-  --link-hover-color: #b3fbff !important;
-  --text-color: #b0b0c0 !important; /* Slightly cooler grey for text */
-  --heading-color: #e6e6fa !important;
+  --sidebar-bg:        #070712 !important;
+  --body-bg:           #0a0a18 !important;
+  --link-color:        #6deaef !important;
+  --link-hover-color:  #b8f6fa !important;
+  --text-color:        #a0a0c0 !important;
+  --heading-color:     #dcdcf8 !important;
 }
 
-/* 2. The HUD Sidebar (Gradient + Glowing Active Tab) */
-#sidebar {
-  /* Ensure base background is transparent so the gradient works */
-  background-color: transparent !important;
-  
-  /* Layering the stars and the transparent background */
-  background-image: 
-    /* Layer 1-3: White/Grey Stars of different sizes */
-    radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.6) 1px, transparent 1.5px),
-    radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.4) 1px, transparent 1.5px),
-    radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.5) 1.5px, transparent 2px),
-    /* Layer 4: A faint glowing Cyan star */
-    radial-gradient(circle at 70% 10%, rgba(0, 240, 255, 0.8) 1.5px, transparent 3px),
-    /* Layer 5: The main transparent gradient background */
-    linear-gradient(to bottom, rgba(5, 5, 8, 0.5) 0%, rgba(10, 10, 16, 0.8) 100%) !important;
-    
-  /* Make the star pattern repeat infinitely */
-  background-size: 
-    150px 150px, 
-    200px 200px, 
-    250px 250px, 
-    300px 300px, 
-    100% 100% !important;
-
-  /* Adds a futuristic frosted glass blur to anything behind the sidebar */
-  backdrop-filter: blur(8px) !important; 
-  -webkit-backdrop-filter: blur(8px) !important;
-  
-  border-right: 1px solid rgba(0, 240, 255, 0.2) !important; /* Glowy border */
-}
-
-#sidebar #nav-wrapper, 
-#sidebar #sidebar-footer {
-  background: transparent !important;
-}
-
-#sidebar .nav-item.active i,
-#sidebar .nav-item.active span {
-  color: #00f0ff !important; 
-  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7); /* Adds a neon holographic glow */
-}
-
-/* 3. Subtle Blueprint / Matrix Grid Background */
+/* ─────────────────────────────────────────
+   2. BODY
+───────────────────────────────────────── */
 body {
-  background-image: 
-    linear-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.02) 1px, transparent 1px) !important;
-  background-size: 40px 40px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-weight: 300;
+  background-color: #0a0a18 !important;
+  background-image:
+    linear-gradient(rgba(109,234,239,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109,234,239,0.022) 1px, transparent 1px) !important;
+  background-size: 48px 48px !important;
 }
 
-/* 4. Robotic / Terminal Headers */
-h1{
-    font-family: 'Courier New', Courier, monospace !important;
-    letter-spacing: -0.5px;
-    color: #ffffff !important;
-}
-h2, h3 {
-  font-family: 'Courier New', Courier, monospace !important;
-  letter-spacing: -0.5px;
+/* ─────────────────────────────────────────
+   3. STARFIELD 
+───────────────────────────────────────── */
+#main-wrapper {
+  position: relative;
+  z-index: 1;
 }
 
-/* 5. Cyber-Buttons (For your About Me page links) */
-.btn-outline-primary {
-  color: #00f0ff !important;
-  border-color: #00f0ff !important;
-  background-color: rgba(0, 240, 255, 0.03) !important;
-  transition: all 0.3s ease;
+#main-wrapper::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.80) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.30) 1px, transparent 1px),
+    radial-gradient(circle, rgba(109,234,239,0.50) 1.5px, transparent 2px);
+  background-size: 320px 320px, 510px 510px, 740px 740px, 590px 590px;
+  background-position: 17px 43px, 83px 180px, 210px 60px, 340px 290px;
+  animation: drift 100s linear infinite;
+  opacity: 0.60;
 }
 
-.btn-outline-primary:hover {
-  background-color: #00f0ff !important;
-  color: #000 !important; /* Black text on cyan background when hovered */
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); /* Button glow */
+@keyframes drift {
+  from { background-position: 17px 43px, 83px 180px, 210px 60px, 340px 290px; }
+  to   { background-position: 337px 363px, 593px 690px, 720px 570px, 650px 600px; }
+}
+
+/* ─────────────────────────────────────────
+   4. TYPOGRAPHY
+───────────────────────────────────────── */
+h1 {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.4rem) !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase;
+  color: #eeeeff !important;
+}
+h2 {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.5vw, 2rem) !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase;
+  color: #d0d0f0 !important;
+}
+
+/* ─────────────────────────────────────────
+   5. SIDEBAR — Glowy & Large
+───────────────────────────────────────── */
+#sidebar {
+  background: linear-gradient(165deg, rgba(14, 10, 40, 0.94), rgba(4, 5, 16, 0.99)) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  border-right: 1px solid rgba(109,234,239,0.15) !important;
+  box-shadow: 4px 0 40px rgba(0,0,0,0.55) !important;
+}
+
+#sidebar .nav-link {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+#sidebar .nav-item.active .nav-link {
+  color: #6deaef !important;
+  text-shadow: 0 0 12px rgba(109,234,239,0.6), 0 0 24px rgba(109,234,239,0.3) !important;
+}
+
+#sidebar .nav-link:hover {
+  color: #b8f6fa !important;
+  padding-left: 8px !important;
+}
+
+/* ─────────────────────────────────────────
+   6. PROJECTS PAGE — Cinematic Grid
+───────────────────────────────────────── */
+.proj-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+
+
+.proj-card {
+  display: block;
+  position: relative;
+  height: 260px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(109,234,239,0.16);
+  background: #0e0e22;
+  text-decoration: none !important;
+  transition: all 0.32s ease;
+  z-index: 1;
+}
+
+/* This makes the whole card clickable and sits above the overlay */
+.proj-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.proj-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(109,234,239,0.5);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 0 20px rgba(109,234,239,0.1);
+}
+
+.proj-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+  transition: transform 0.4s ease, filter 0.4s ease;
+  z-index: 0;
+}
+
+.proj-card:hover .proj-card-img {
+  transform: scale(1.05);
+  filter: brightness(0.65);
+}
+
+.proj-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(8,8,24,0.95) 90%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.proj-card-body {
+  position: absolute;
+  bottom: 0;
+  padding: 1.5rem;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.proj-card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+/* ─────────────────────────────────────────
+   7. HEADER & SEARCH
+───────────────────────────────────────── */
+#search-wrapper {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(109,234,239,0.1) !important;
+}
+
+#search-input {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(109, 234, 239, 0.2) !important;
+  color: #6deaef !important;
+  border-radius: 20px !important;
+  padding-left: 2.5rem !important;
+}
+
+#search-input:focus {
+  border-color: #6deaef !important;
+  box-shadow: 0 0 15px rgba(109, 234, 239, 0.2) !important;
+}
+
+/* ─────────────────────────────────────────
+   8. FOOTER
+───────────────────────────────────────── */
+footer {
+  background: transparent !important;
+  border-top: 1px solid rgba(109, 234, 239, 0.08) !important;
+  padding: 2rem 0 !important;
+  color: rgba(160, 160, 192, 0.5) !important;
+}
+
+footer a { color: #6deaef !important; opacity: 0.7; }
+footer a:hover { opacity: 1; }
+
+/* ─────────────────────────────────────────
+   9. THEORY LIST
+───────────────────────────────────────── */
+.theory-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(109, 234, 239, 0.1);
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  transition: all 0.25s ease;
+  text-decoration: none !important;
+}
+
+.theory-entry:hover {
+  background: rgba(109, 234, 239, 0.05);
+  transform: translateX(5px);
+  border-color: #6deaef;
+}
+
+.theory-entry-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  color: #dcdcf8;
+  text-transform: uppercase;
 }
