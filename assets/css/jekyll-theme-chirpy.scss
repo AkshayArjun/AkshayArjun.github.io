@@ -1,0 +1,90 @@
+---
+---
+@import "main";
+
+/* --- SCI-FI / ROBOTICS THEME OVERRIDES --- */
+
+/* 1. Deep Space & Holographic Cyan Palette */
+[data-mode="dark"] {
+  --sidebar-bg: #050508 !important; /* Pitch black with a hint of blue */
+  --body-bg: #08080c !important; 
+  --link-color: #00f0ff !important; /* Cyber cyan */
+  --link-hover-color: #b3fbff !important;
+  --text-color: #b0b0c0 !important; /* Slightly cooler grey for text */
+  --heading-color: #e6e6fa !important;
+}
+
+/* 2. The HUD Sidebar (Gradient + Glowing Active Tab) */
+#sidebar {
+  /* Ensure base background is transparent so the gradient works */
+  background-color: transparent !important;
+  
+  /* Layering the stars and the transparent background */
+  background-image: 
+    /* Layer 1-3: White/Grey Stars of different sizes */
+    radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.6) 1px, transparent 1.5px),
+    radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.4) 1px, transparent 1.5px),
+    radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.5) 1.5px, transparent 2px),
+    /* Layer 4: A faint glowing Cyan star */
+    radial-gradient(circle at 70% 10%, rgba(0, 240, 255, 0.8) 1.5px, transparent 3px),
+    /* Layer 5: The main transparent gradient background */
+    linear-gradient(to bottom, rgba(5, 5, 8, 0.5) 0%, rgba(10, 10, 16, 0.8) 100%) !important;
+    
+  /* Make the star pattern repeat infinitely */
+  background-size: 
+    150px 150px, 
+    200px 200px, 
+    250px 250px, 
+    300px 300px, 
+    100% 100% !important;
+
+  /* Adds a futuristic frosted glass blur to anything behind the sidebar */
+  backdrop-filter: blur(8px) !important; 
+  -webkit-backdrop-filter: blur(8px) !important;
+  
+  border-right: 1px solid rgba(0, 240, 255, 0.2) !important; /* Glowy border */
+}
+
+#sidebar #nav-wrapper, 
+#sidebar #sidebar-footer {
+  background: transparent !important;
+}
+
+#sidebar .nav-item.active i,
+#sidebar .nav-item.active span {
+  color: #00f0ff !important; 
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7); /* Adds a neon holographic glow */
+}
+
+/* 3. Subtle Blueprint / Matrix Grid Background */
+body {
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.02) 1px, transparent 1px) !important;
+  background-size: 40px 40px !important;
+}
+
+/* 4. Robotic / Terminal Headers */
+h1{
+    font-family: 'Courier New', Courier, monospace !important;
+    letter-spacing: -0.5px;
+    color: #ffffff !important;
+}
+h2, h3 {
+  font-family: 'Courier New', Courier, monospace !important;
+  letter-spacing: -0.5px;
+}
+
+/* 5. Cyber-Buttons (For your About Me page links) */
+.btn-outline-primary {
+  color: #00f0ff !important;
+  border-color: #00f0ff !important;
+  background-color: rgba(0, 240, 255, 0.03) !important;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #00f0ff !important;
+  color: #000 !important; /* Black text on cyan background when hovered */
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); /* Button glow */
+}
